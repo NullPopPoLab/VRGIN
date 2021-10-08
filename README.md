@@ -1,3 +1,7 @@
+# NullPopPo-Custom
+[詳細](https://github.com/NullPopPoLab/KoikatuVR/blob/master/!NullPopPo-Custom.md)
+
+---
 obtdai様版の[VRGIN](https://github.com/obtdai/VRGIN)をKoikatuVR用に触ったもの
 
 コイカツでCtrl + F5したときに光っている部分の色がおかしくなる件に暫定対応したのだけど、
