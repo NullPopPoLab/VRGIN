@@ -452,7 +452,7 @@ namespace VRGIN.Modes
 
         protected virtual void InitializeScreenCapture()
         {
-#if !UNITY_4_5
+#if !UNITY_4_5 && false
             _CapturePanorama = VR.Camera.SteamCam.gameObject.AddComponent<VRCapturePanorama>();
 #endif
         }
