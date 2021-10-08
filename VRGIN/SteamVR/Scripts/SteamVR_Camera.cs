@@ -9,6 +9,7 @@ using System.Collections;
 using System.Reflection;
 using VRGIN.Core;
 using Valve.VR;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Camera))]
 public class SteamVR_Camera : MonoBehaviour
@@ -196,9 +197,24 @@ public class SteamVR_Camera : MonoBehaviour
 			transform.localRotation = Quaternion.identity;
 			transform.localScale = Vector3.one;
 
+#if true
+			var il = transform.childCount;
+            if (il > 0)
+            {
+				// コレクション参照中に変化させるとバグのもと 
+				// 横着せず2 pathで処理 
+				var gol = new Transform[il];
+				for (var i = 0; i < il; ++i) gol[i] = transform.GetChild(i);
+				for (var i = 0; i < il; ++i) gol[i].parent = head;
+			}
+#else
+			// bug 1: while括られてない 
+			// bug 2: ハマリの原因 
 			while (transform.childCount > 0)
 				VRLog.Info("Timing change because not end of expnad");
 				transform.GetChild(0).parent = head;
+#endif
+
 #if !UNITY_2017_2_OR_NEWER
 			var guiLayer = GetComponent<GUILayer>();
 			if (guiLayer != null)
